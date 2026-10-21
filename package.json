@@ -1,0 +1,23 @@
+{
+  "name": "code-rush",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n web,api \"npm:dev:web\" \"npm:dev:api\"",
+    "dev:web": "npm --workspace @code-rush/web run dev",
+    "dev:api": "go -C apps/api run ./cmd/server",
+    "build": "npm --workspace @code-rush/web run build",
+    "check:api": "go -C apps/api vet ./...",
+    "check": "npm run build && npm run check:api"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}
+
