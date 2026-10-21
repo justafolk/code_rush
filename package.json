@@ -10,8 +10,9 @@
     "dev:web": "npm --workspace @code-rush/web run dev",
     "dev:api": "go -C apps/api run ./cmd/server",
     "build": "npm --workspace @code-rush/web run build",
+    "test": "npm --workspace @code-rush/web run test",
     "check:api": "go -C apps/api vet ./...",
-    "check": "npm run build && npm run check:api"
+    "check": "npm run build && npm run test && npm run check:api"
   },
   "devDependencies": {
     "concurrently": "^10.0.6"
